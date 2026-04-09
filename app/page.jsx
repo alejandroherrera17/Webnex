@@ -8,29 +8,42 @@ import * as THREE from "three";
 
 const navItems = [
   { label: "Servicios", href: "#services" },
-  { label: "The Nexus Path", href: "#methodology" },
-  { label: "Prioridad", href: "#contact" }
+  { label: "Cómo funciona", href: "#methodology" },
+  { label: "Casos reales", href: "#testimonials" },
+  { label: "Contacto", href: "#contact" }
+];
+
+const heroBadges = [
+  ["<15 días", "entregado en menos de 15 días"],
+  ["Medible", "resultados medibles"],
+  ["Simple", "sin conocimientos técnicos"]
+];
+
+const painPoints = [
+  "Estás perdiendo clientes que ya buscaron lo que vendes.",
+  "Tu competencia aparece primero en Google y tú no.",
+  "Sin web, dependes solo del voz a voz y eso tiene un límite."
 ];
 
 const serviceCards = [
   {
-    title: "Desarrollo Cloud",
+    title: "Sitio Web Profesional",
     description:
-      "Arquitecturas resilientes, despliegues de baja latencia y plataformas listas para escalar sin fricción.",
+      "Una presencia digital que genera confianza desde el primer segundo. Diseño a medida, adaptado a celulares, y optimizado para que Google te encuentre. Tu negocio disponible las 24 horas.",
     accent: "from-fuchsia-500/40 to-cyan-400/30",
     size: "lg:col-span-2"
   },
   {
-    title: "AI Integration",
+    title: "Posicionamiento en Google (SEO)",
     description:
-      "Agentes, automatización inteligente y capas de decisión que convierten datos en ventaja operativa real.",
+      "De nada sirve tener web si nadie la encuentra. Configuramos tu sitio para que aparezca cuando alguien en tu ciudad busca exactamente lo que tú vendes.",
     accent: "from-cyan-400/40 to-blue-500/30",
     size: ""
   },
   {
-    title: "UX Disruptivo",
+    title: "Diseño que Convierte",
     description:
-      "Interfaces premium diseñadas para elevar percepción de marca, conversión y retención desde el primer segundo.",
+      "No hacemos páginas bonitas que no venden. Cada elemento está pensado para que el visitante se convierta en cliente: botones de contacto, WhatsApp directo, formularios simples y llamadas a la acción claras.",
     accent: "from-violet-500/40 to-fuchsia-500/30",
     size: ""
   }
@@ -39,24 +52,51 @@ const serviceCards = [
 const pathSteps = [
   {
     id: "01",
-    title: "Decode",
-    text: "Traducimos visión, mercado y restricciones en una arquitectura de oportunidad concreta."
+    title: "Hablamos",
+    text: "Nos cuentas sobre tu negocio, tus clientes y lo que necesitas. Sin tecnicismos. En menos de 48 horas tienes una propuesta clara y un precio definido."
   },
   {
     id: "02",
-    title: "Design",
-    text: "Definimos flujos, interfaces y narrativa visual con precisión de producto premium."
+    title: "Diseñamos",
+    text: "Creamos el diseño de tu web basándonos en lo que tú vendes y a quién le vendes. Tú apruebas cada detalle antes de continuar."
   },
   {
     id: "03",
-    title: "Deploy",
-    text: "Construimos con velocidad, observabilidad y una base técnica preparada para crecer."
+    title: "Lanzamos",
+    text: "Tu web queda lista, en vivo y funcionando. Optimizada para celular, rápida y conectada a Google. En menos de 15 días desde que empezamos."
   },
   {
     id: "04",
-    title: "Dominate",
-    text: "Iteramos con datos y automatización para convertir el software en una ventaja acumulativa."
+    title: "Crecemos",
+    text: "Te enseñamos a sacarle el máximo provecho. Y si necesitas actualizaciones o crecer, seguimos contigo."
   }
+];
+
+const testimonials = [
+  {
+    quote:
+      '"Antes dependíamos solo del voz a voz. A los dos meses de lanzar la web, recibimos más de 30 consultas nuevas solo por Google."',
+    author: "Carlos M.",
+    business: "Clínica Dental, Barranquilla"
+  },
+  {
+    quote:
+      '"No entendía nada de tecnología y me lo explicaron todo súper claro. La página quedó exactamente como quería."',
+    author: "Laura T.",
+    business: "Boutique de ropa, Medellín"
+  },
+  {
+    quote:
+      '"Pensé que era caro, pero la primera venta que conseguí por la web pagó todo el proyecto."',
+    author: "Andrés P.",
+    business: "Taller mecánico, Bogotá"
+  }
+];
+
+const footerLinks = [
+  { label: "Servicios", href: "#services" },
+  { label: "Cómo funciona", href: "#methodology" },
+  { label: "Contacto", href: "#contact" }
 ];
 
 function StarField() {
@@ -215,37 +255,36 @@ function ContactForm() {
       <div className="relative grid gap-5">
         <div>
           <span className="inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-cyan-200">
-            Alta prioridad
+            Consulta gratuita
           </span>
-          <h3 className="mt-4 font-display text-2xl font-semibold text-white">Solicita una conversación ejecutiva</h3>
+          <h3 className="mt-4 font-display text-2xl font-semibold text-white">Cuéntanos qué necesita tu negocio</h3>
           <p className="mt-3 max-w-xl text-sm leading-7 text-white/68">
-            Comparte contexto, objetivos y urgencia. Respondemos con enfoque estratégico, no con plantillas.
+            Sin compromisos, sin tecnicismos y sin letra pequeña. Solo una conversación honesta para ayudarte a crecer en internet.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
-          <input name="name" required placeholder="Nombre" className="input-shell" />
-          <input name="email" required type="email" placeholder="Email corporativo" className="input-shell" />
-          <input name="company" placeholder="Empresa" className="input-shell" />
-          <select name="service" defaultValue="AI Integration" className="input-shell">
-            <option>AI Integration</option>
-            <option>Desarrollo Cloud</option>
-            <option>UX Disruptivo</option>
+          <input name="name" required placeholder="¿Cuál es tu nombre?" className="input-shell" />
+          <input name="business" required placeholder="¿A qué se dedica tu negocio?" className="input-shell" />
+          <select name="hasWebsite" defaultValue="No" className="input-shell">
+            <option>Sí</option>
+            <option>No</option>
+            <option>Tengo una pero no funciona bien</option>
+          </select>
+          <select name="goal" defaultValue="Conseguir más clientes" className="input-shell">
+            <option>Conseguir más clientes</option>
+            <option>Vender en línea</option>
+            <option>Aparecer en Google</option>
+            <option>Otra</option>
           </select>
         </div>
-        <textarea
-          name="message"
-          required
-          rows={5}
-          placeholder="Cuéntanos qué sistema, producto o experiencia quieres convertir en una ventaja real."
-          className="input-shell resize-none"
-        />
+        <input name="contact" required placeholder="WhatsApp o correo para contactarte" className="input-shell" />
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <button
             type="submit"
             disabled={loading}
             className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-violet-500 to-sky-400 px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(14,165,233,0.35)] transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {loading ? "Enviando..." : "Activar contacto prioritario"}
+            {loading ? "Enviando..." : "Activar mi consulta gratuita →"}
           </button>
           <AnimatePresence mode="wait">
             {status.message ? (
@@ -298,7 +337,7 @@ export default function Page() {
         className="fixed left-1/2 top-4 z-50 flex -translate-x-1/2 items-center justify-between rounded-full border border-white/12 px-4 py-3 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:px-6"
       >
         <a href="#hero" className="text-sm font-semibold tracking-[0.35em] text-white/90">
-          WEBNEX
+          WebNex
         </a>
         <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
@@ -311,7 +350,7 @@ export default function Page() {
           href="#contact"
           className="rounded-full border border-cyan-300/30 bg-white/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-100 transition hover:border-cyan-200/60 hover:bg-cyan-300/10"
         >
-          Consultar
+          Quiero mi web →
         </a>
       </motion.header>
 
@@ -326,34 +365,31 @@ export default function Page() {
           className="relative z-10"
         >
           <span className="inline-flex rounded-full border border-white/10 bg-white/6 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-white/70 backdrop-blur-xl">
-            Ultra-Luxury Software Studio
+            Sitios web para negocios colombianos
           </span>
           <h1 className="mt-8 max-w-4xl font-display text-5xl font-semibold leading-[0.94] tracking-[-0.05em] text-white sm:text-6xl lg:text-7xl">
-            WebNex: Transformando código en ventajas competitivas exponenciales.
+            Tu competencia ya tiene página web. ¿Tú también?
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-white/70 sm:text-lg">
-            Diseñamos ecosistemas digitales donde cloud, inteligencia artificial y experiencia de usuario se fusionan para crear crecimiento, eficiencia y prestigio de marca.
+            Cada día que tu negocio no existe en Google, un cliente que te estaba buscando le compró a otro. Creamos sitios web profesionales, rápidos y que venden para negocios como el tuyo.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
               href="#contact"
               className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-500 to-sky-400 px-6 py-3 text-sm font-semibold text-white shadow-[0_14px_40px_rgba(59,130,246,0.35)] transition hover:scale-[1.02]"
             >
-              Reservar estrategia
+              Quiero mi web gratis
+              <span className="ml-2 text-white/80">(consulta sin costo)</span>
             </a>
             <a
-              href="#services"
+              href="#testimonials"
               className="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/6 px-6 py-3 text-sm font-semibold text-white/85 backdrop-blur-xl transition hover:bg-white/10"
             >
-              Explorar capacidades
+              Ver sitios que hemos creado ↓
             </a>
           </div>
           <div className="mt-10 grid max-w-2xl gap-4 sm:grid-cols-3">
-            {[
-              ["+140%", "aceleración operacional"],
-              ["24/7", "automatización inteligente"],
-              ["<90 días", "de visión a despliegue premium"]
-            ].map(([value, label], index) => (
+            {heroBadges.map(([value, label], index) => (
               <motion.div
                 key={label}
                 initial={{ opacity: 0, y: 24 }}
@@ -362,7 +398,7 @@ export default function Page() {
                 className="rounded-[1.5rem] border border-white/10 bg-white/6 p-4 backdrop-blur-xl"
               >
                 <div className="text-2xl font-semibold text-white">{value}</div>
-                <div className="mt-2 text-sm text-white/60">{label}</div>
+                <div className="mt-2 text-sm text-white/60">✅ {label}</div>
               </motion.div>
             ))}
           </div>
@@ -385,15 +421,36 @@ export default function Page() {
             </Suspense>
           </Canvas>
           <div className="absolute bottom-5 left-5 right-5 rounded-[1.6rem] border border-white/10 bg-black/35 p-4 backdrop-blur-xl">
-            <p className="text-sm uppercase tracking-[0.3em] text-cyan-200/80">Interactive Core</p>
+            <p className="text-sm uppercase tracking-[0.3em] text-cyan-200/80">Más visibilidad, más confianza</p>
             <p className="mt-2 text-sm leading-7 text-white/70">
-              Un sistema visual que expresa precisión tecnológica, control dinámico y capacidad de evolución continua.
+              Una web profesional te ayuda a aparecer en Google, responder más rápido y convertir visitas en clientes reales.
             </p>
           </div>
         </motion.div>
       </section>
 
-      <Section id="services" eyebrow="Servicios" title="Capacidades diseñadas para mover negocio, no solo software.">
+      <Section
+        id="problem"
+        eyebrow="El problema"
+        title="¿Sabías que el 81% de las personas busca en Google antes de comprar cualquier cosa?"
+      >
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur-2xl">
+            <p className="text-sm leading-8 text-white/70">
+              Si tu negocio no aparece ahí, sencillamente no existe para ellos. No importa cuántos años llevas en el mercado, ni qué tan bueno sea tu producto. Si no estás en internet, tu cliente potencial no te va a encontrar, pero sí va a encontrar a tu competencia.
+            </p>
+          </div>
+          <div className="grid gap-4">
+            {painPoints.map((point) => (
+              <div key={point} className="rounded-[1.7rem] border border-white/10 bg-white/5 p-5 backdrop-blur-2xl">
+                <p className="text-sm leading-7 text-white/70">📉 {point}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <Section id="services" eyebrow="Servicios" title="Lo que hacemos por tu negocio">
         <div className="grid gap-5 lg:grid-cols-3">
           {serviceCards.map((card, index) => (
             <motion.article
@@ -413,7 +470,7 @@ export default function Page() {
                 <p className="mt-4 max-w-md text-sm leading-7 text-white/68">{card.description}</p>
                 <div className="mt-10 h-px w-full bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent" />
                 <p className="mt-6 text-xs uppercase tracking-[0.35em] text-cyan-200/70">
-                  Precisión técnica + percepción premium
+                  Diseñado para atraer, convencer y convertir
                 </p>
               </div>
             </motion.article>
@@ -421,10 +478,10 @@ export default function Page() {
         </div>
       </Section>
 
-      <Section id="methodology" eyebrow="The Nexus Path" title="De idea a dominio: un recorrido animado de 0 a 100.">
+      <Section id="methodology" eyebrow="Cómo funciona" title="Así de simple es trabajar con nosotros">
         <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
           <div className="rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur-2xl">
-            <div className="text-sm uppercase tracking-[0.35em] text-white/55">Progress Engine</div>
+            <div className="text-sm uppercase tracking-[0.35em] text-white/55">Proceso claro</div>
             <div className="mt-6 h-2 overflow-hidden rounded-full bg-white/8">
               <motion.div
                 className="h-full rounded-full bg-gradient-to-r from-violet-500 to-sky-400"
@@ -466,24 +523,84 @@ export default function Page() {
         </div>
       </Section>
 
-      <Section id="contact" eyebrow="Conversión" title="Un punto de contacto diseñado para cerrar atención ejecutiva.">
+      <Section id="testimonials" eyebrow="Casos reales" title="Negocios que ya dieron el paso">
+        <div className="grid gap-5 lg:grid-cols-3">
+          {testimonials.map((item, index) => (
+            <motion.article
+              key={item.author}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.12, duration: 0.7 }}
+              viewport={{ once: true, amount: 0.25 }}
+              className="rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur-2xl"
+            >
+              <div className="mb-8 inline-flex rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/60">
+                Caso 0{index + 1}
+              </div>
+              <p className="text-sm leading-8 text-white/72">{item.quote}</p>
+              <div className="mt-10 h-px w-full bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent" />
+              <p className="mt-6 text-sm font-semibold text-white">{item.author}</p>
+              <p className="mt-2 text-sm text-cyan-200/70">{item.business}</p>
+            </motion.article>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="contact" eyebrow="Contacto" title="Cada día sin web es un cliente que perdiste">
         <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
           <div className="self-center">
             <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-2xl">
-              <h3 className="font-display text-2xl font-semibold text-white">Software con impacto de consejo directivo</h3>
+              <h3 className="font-display text-2xl font-semibold text-white">Agenda tu consulta gratuita hoy</h3>
               <p className="mt-4 text-sm leading-7 text-white/68">
-                Entramos donde el software necesita elevar margen, percepción o velocidad. Cada engagement parte de una hipótesis de negocio y termina con sistemas que operan a favor de la marca.
+                Sin compromisos, sin tecnicismos, sin letra pequeña. Solo una conversación honesta sobre cómo podemos ayudarte a crecer en internet.
               </p>
               <div className="mt-8 space-y-4 text-sm text-white/70">
-                <div className="rounded-2xl border border-white/8 bg-black/20 p-4">Diagnóstico estratégico en menos de 48 horas.</div>
-                <div className="rounded-2xl border border-white/8 bg-black/20 p-4">Roadmap priorizado por retorno, complejidad y velocidad de ejecución.</div>
-                <div className="rounded-2xl border border-white/8 bg-black/20 p-4">Arquitectura y experiencia listas para competir en mercados exigentes.</div>
+                <div className="rounded-2xl border border-white/8 bg-black/20 p-4">
+                  ⚡ Solo tomamos 3 proyectos nuevos por mes para garantizar calidad total.
+                </div>
+                <div className="rounded-2xl border border-white/8 bg-black/20 p-4">
+                  Respondemos en menos de 24 horas • Sin costos ocultos • Sin contratos largos
+                </div>
+                <div className="rounded-2xl border border-white/8 bg-black/20 p-4">
+                  Cuéntanos qué quieres lograr y te diremos la forma más simple de hacerlo realidad.
+                </div>
               </div>
             </div>
           </div>
           <ContactForm />
         </div>
       </Section>
+
+      <footer className="mx-auto w-full max-w-7xl px-4 pb-12 pt-8 sm:px-6 lg:px-8">
+        <div className="rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur-2xl">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-white/70">WebNex</p>
+              <p className="mt-3 max-w-xl text-sm leading-7 text-white/68">
+                Sitios web profesionales para negocios colombianos
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-4 text-sm text-white/72">
+              {footerLinks.map((item) => (
+                <a key={item.href} href={item.href} className="nav-link">
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-white/62 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-2">
+              <a href="mailto:hola@webnex.co" className="transition hover:text-white">
+                hola@webnex.co
+              </a>
+              <a href="#contact" className="transition hover:text-white">
+                WhatsApp directo
+              </a>
+            </div>
+            <p>© 2025 WebNex. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

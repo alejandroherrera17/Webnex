@@ -2,11 +2,11 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   const payload = await request.json();
-  const { name, email, message, service } = payload;
+  const { name, business, hasWebsite, goal, contact } = payload;
 
-  if (!name || !email || !message) {
+  if (!name || !business || !goal || !contact) {
     return NextResponse.json(
-      { message: "Faltan campos obligatorios para activar la solicitud prioritaria." },
+      { message: "Completa los campos principales para activar tu consulta gratuita." },
       { status: 400 }
     );
   }
@@ -15,6 +15,6 @@ export async function POST(request) {
 
   return NextResponse.json({
     ok: true,
-    message: `Solicitud recibida para ${service || "servicios estratégicos"}. WebNex responderá a ${email} con prioridad.`
+    message: `Recibimos tu solicitud para ${business}. Te escribiremos a ${contact} en menos de 24 horas para hablar sobre ${goal.toLowerCase()}. ${hasWebsite ? `Estado actual: ${hasWebsite}.` : ""}`.trim()
   });
 }
