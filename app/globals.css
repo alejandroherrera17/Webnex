@@ -6,6 +6,8 @@
   --background: #050505;
   --foreground: #ffffff;
   --muted: rgba(255, 255, 255, 0.66);
+  --font-manrope: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-space-grotesk: "Trebuchet MS", "Arial Narrow", Arial, sans-serif;
 }
 
 * {
@@ -22,6 +24,10 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-space-grotesk), sans-serif;
 }
 
 a {
